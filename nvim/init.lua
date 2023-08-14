@@ -39,6 +39,8 @@ P.S. You can delete this when you're done too. It's your config now :)
 -- See `:help mapleader`
 --  NOTE: Must happen before plugins are required (otherwise wrong leader will be used)
 vim.g.mapleader = ' '
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
 vim.g.maplocalleader = ' '
 
 -- Install package manager
@@ -194,6 +196,17 @@ require('lazy').setup({
       'nvim-treesitter/nvim-treesitter-textobjects',
     },
     build = ':TSUpdate',
+  },
+  
+  {
+    'nvim-tree/nvim-tree.lua',
+    setup = {
+      options = {
+        filters = {
+          dotfiles = false,
+        }
+      }
+    }
   },
 
   -- NOTE: Next Step on Your Neovim Journey: Add/Configure additional "plugins" for kickstart
@@ -520,6 +533,8 @@ cmp.setup {
     { name = 'luasnip' },
   },
 }
+
+require("nvim-tree").setup()
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
